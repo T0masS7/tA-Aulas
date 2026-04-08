@@ -2,24 +2,41 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Aulas.Data.Model{
+namespace Aulas.Data.Model
+{
     /// <summary>
-    /// Classe do relationamento entre alunos e disciplinas
+    /// Representa a inscrição de um aluno numa unidade curricular (relacionamento N-M entre Student e Course)
     /// </summary>
-    [PrimaryKey(nameof(StudentFK),nameof(CourseFK))] //Pk Composta(EF
-    public class Registration{
+    [PrimaryKey(nameof(StudentFK), nameof(CourseFK))]
+    public class Registration
+    {
+        /// <summary>
+        /// Data em que o aluno se inscreveu na UC
+        /// </summary>
+        public DateTime RegistrationDate { get; set; } = DateTime.Now;
 
-        public DateTime RegistrationDate {get;set;} = DateTime.Now;
+        /*********************
+         * Relacionamentos 1-N
+         *********************/
 
-        //FK para Student
-        //[Key, Column(Order = 1)] -> valido para entity framework < 6
+        /// <summary>
+        /// FK para o aluno inscrito
+        /// </summary>
         public int StudentFK { get; set; }
+
+        /// <summary>
+        /// Aluno inscrito na UC
+        /// </summary>
         public Student Student { get; set; } = null!;
 
-        //Fk para course
-        //[Key, Column(Order = 2)] -> valido para entity framework < 6
+        /// <summary>
+        /// FK para a UC em que o aluno se inscreveu
+        /// </summary>
         public int CourseFK { get; set; }
-        public Course Course { get; set; } = null!;
 
+        /// <summary>
+        /// UC em que o aluno se inscreveu
+        /// </summary>
+        public Course Course { get; set; } = null!;
     }
 }

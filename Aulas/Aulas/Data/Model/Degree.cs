@@ -1,21 +1,29 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace Aulas.Data.Model{
-
-    public class Degree{
-
+namespace Aulas.Data.Model
+{
+    /// <summary>
+    /// Representa um curso (licenciatura/mestrado) disponível na instituição
+    /// </summary>
+    public class Degree
+    {
+        /// <summary>
+        /// PK
+        /// </summary>
         [Key]
-        public int Id {get; set;}
+        public int Id { get; set; }
 
-        // O ="" faz com que ao criar o atributo seja atribuido a string vazia
-        [Required(ErrorMessage="Prenchimento Obrigatório")]
+        /// <summary>
+        /// Nome do curso
+        /// </summary>
+        [Required(ErrorMessage = "Preenchimento Obrigatório")]
         [StringLength(100)]
         public string Name { get; set; } = "";
 
-        // ? ao pe do string permite que o atributo seja nulo
+        /// <summary>
+        /// Nome do ficheiro do logótipo do curso (opcional)
+        /// </summary>
         [StringLength(50)]
-        public string? Logotype {get; set;} 
-
-
+        public string? Logotype { get; set; }
     }
 }
