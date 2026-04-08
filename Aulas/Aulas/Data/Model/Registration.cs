@@ -9,7 +9,7 @@ namespace Aulas.Data.Model{
     [PrimaryKey(nameof(StudentFK),nameof(CourseFK))] //Pk Composta(EF
     public class Registration{
 
-        public DateTime RegistrationDate { get; set; }
+        public DateTime RegistrationDate {get;set;} = DateTime.Now;
 
         //FK para Student
         //[Key, Column(Order = 1)] -> valido para entity framework < 6

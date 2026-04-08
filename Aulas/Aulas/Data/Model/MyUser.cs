@@ -7,11 +7,24 @@ namespace Aulas.Data.Model{
 
         [Key]
         public int Id { get; set; }//PK
-        public string Name { get; set; }//50 caractres, not null
+
+        [Display(Name = "Nome")]
+        [Required(ErrorMessage = "{0} é de preenchimento obrigatório")]
+        [StringLength(50)]
+        public string Name { get; set; } = "";
+
+        [Display(Name = "Data de Nascimento")]
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
         public DateTime  BirthDate { get; set; }
-        public string CellPhone  { get; set; } // 17 caractres, not null
-        public string UserID  { get; set; } // 50 caractres, null
- 
+
+        [StringLength(17)]
+        [Display(Name = "Número de Telefone")]
+        [Required(ErrorMessage = "{0} é de preenchimento obrigatório")]
+        public string CellPhone { get; set; } = "";
+
+        [StringLength(50)]
+        public string? UserID {get;set;}  // 50 caractres, null
 
     }
 }
