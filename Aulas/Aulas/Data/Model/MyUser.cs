@@ -15,6 +15,7 @@ namespace Aulas.Data.Model
 
         /// <summary>
         /// Nome do utilizador
+        /// Nome
         /// </summary>
         [Display(Name = "Nome")]
         [Required(ErrorMessage = "{0} é de preenchimento obrigatório")]
