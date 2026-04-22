@@ -25,11 +25,11 @@
             <div class="form-group">
                 <label asp-for="Degree.Logotype" class="control-label"></label>
               @*@<input asp-for="Degree.Logotype" class="form-control" />*@
-                <input asp-for=""
+                <input asp-for="ImageLogo"
                        type="file"
                        accept=".png,.jpg,.jpeg"
                        class="form-control" />
-                <span asp-validation-for="Degree.Logotype" class="text-danger"></span>
+                <span asp-validation-for="ImageLogo" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />

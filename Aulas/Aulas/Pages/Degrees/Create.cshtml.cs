@@ -54,7 +54,7 @@ namespace Aulas.Pages.Degrees
         {
             if (ImageLogo == null)
             {
-                ModelState.AddModelError("ImageLogo","O ficheiro de imagem é obrigatorio")
+                ModelState.AddModelError("ImageLogo", "O ficheiro de imagem é obrigatorio");
                 return Page();
             }
 

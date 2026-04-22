@@ -27,6 +27,7 @@ namespace Aulas.Data.Model
         [Display(Name = "Data de Nascimento")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}")]
+        [Required(ErrorMessage ="A {0} é de preenchimento obrigatório")]
         public DateTime BirthDate { get; set; }
 
         /// <summary>
@@ -35,6 +36,7 @@ namespace Aulas.Data.Model
         [StringLength(17)]
         [Display(Name = "Número de Telefone")]
         [Required(ErrorMessage = "{0} é de preenchimento obrigatório")]
+        [RegularExpression(@"\+?[0-9]{9-18}")]   //9[1236][0-9]{7} e fixo [23][0-9]{8}
         public string CellPhone { get; set; } = "";
 
         /// <summary>
