@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Aulas.Data;
 using Aulas.Data.Model;
+using System.Globalization;
 
 namespace Aulas.Pages.Students
 {
@@ -33,11 +34,22 @@ namespace Aulas.Pages.Students
         {
             if (!ModelState.IsValid)
             {
+                ViewData["DegreeFK"] = new SelectList(_context.Degrees.OrderBy(d => d.Name), "Id", "Name");
                 return Page();
             }
 
-            _context.Students.Add(Student);
-            await _context.SaveChangesAsync();
+            Student.TuitionFee = Convert.ToDecimal(Student.TuitionFeeAux.Replace(".",","),new CultureInfo("pt-PT"));
+
+            try
+            {
+                _context.Students.Add(Student);
+                await _context.SaveChangesAsync();
+            }
+            catch (Exception )
+            {
+
+                throw;
+            }
 
             return RedirectToPage("./Index");
         }
