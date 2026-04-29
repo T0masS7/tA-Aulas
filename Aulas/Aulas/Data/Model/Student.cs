@@ -16,9 +16,21 @@ namespace Aulas.Data.Model
         public int StudentNumber { get; set; }
 
         /// <summary>
+        /// atributo auxiliar para a propina, para ser usado na View 
+        /// para recolher a propina como string, e depois converter para 
+        /// decimal e para ser guardada na bd
+        /// </summary>
+        [NotMapped] // esta anotação informa a EF para não criar um atributo na bd 
+        [Required(ErrorMessage ="A {0} é obrigatória ")]
+        [Display(Name= "Propina")]
+        [StringLength(10)]
+        [RegularExpression("[0-9]{1,7}([,.][0-9]{1,2})?" , ErrorMessage ="A {0} deve ser um número com até 2 casas decimais")]
+        public string TuitionFeeAux { get; set; } = "";
+
+        /// <summary>
         /// Valor da propina do estudante
         /// </summary>
-        [Precision(8, 2)]
+        [Precision(9, 2)] // informa a EF para criar o atributo com 9 dígitos e 2 casas decimais  
         public decimal TuitionFee { get; set; }
 
         /// <summary>
